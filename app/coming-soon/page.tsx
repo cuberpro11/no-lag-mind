@@ -71,7 +71,7 @@ export default function ComingSoonPage() {
                   <div className="font-mono text-sm space-y-3">
                     <div className="text-gray-400">Natural Language Calculator</div>
                     <div className="text-white">
-                      <span className="text-cyan-400">Input:</span> "What's 15% of $250 plus tax?"
+                      <span className="text-cyan-400">Input:</span> &quot;What&apos;s 15% of $250 plus tax?&quot;
                     </div>
                     <div className="text-gray-500">→</div>
                     <div className="text-white">
@@ -141,8 +141,8 @@ export default function ComingSoonPage() {
                     <div className="text-gray-300 ml-4">3. Add state management</div>
                     <div className="text-gray-500 mt-4">→</div>
                     <div className="text-cyan-400">Prompts Generated:</div>
-                    <div className="text-gray-300 ml-4">• "Create a Next.js project..."</div>
-                    <div className="text-gray-300 ml-4">• "Build a todo list component..."</div>
+                    <div className="text-gray-300 ml-4">• &quot;Create a Next.js project...&quot;</div>
+                    <div className="text-gray-300 ml-4">• &quot;Build a todo list component...&quot;</div>
                   </div>
                 </div>
               </div>
@@ -162,7 +162,7 @@ export default function ComingSoonPage() {
                 Get the perfect plan and prompts for your vibe coding sessions. Tell it what you want to build, and it will generate the optimal strategy and all the prompts you need.
               </p>
               <p className="text-lg text-gray-400 leading-relaxed mb-4">
-                The generator analyzes your project requirements and creates a step-by-step plan tailored to get the best results from your vibe coding tool. Then it automatically generates all the prompts you'll need, in the right order, to build your project efficiently.
+                The generator analyzes your project requirements and creates a step-by-step plan tailored to get the best results from your vibe coding tool. Then it automatically generates all the prompts you&apos;ll need, in the right order, to build your project efficiently.
               </p>
               <ul className="text-gray-300 space-y-2 mb-6">
                 <li className="flex items-start gap-2">

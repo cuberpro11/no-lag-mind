@@ -35,19 +35,21 @@ export function ScrollReveal({
       transition: {
         duration: 0.6,
         delay,
-        ease: [0.25, 0.25, 0, 1],
+        ease: [0.25, 0.25, 0, 1] as const,
       },
     },
   };
 
   if (direction === 'fade') {
-    variants.hidden = { opacity: 0 };
+    variants.hidden = { opacity: 0, y: 0, x: 0 };
     variants.visible = { 
       opacity: 1,
+      y: 0,
+      x: 0,
       transition: {
         duration: 0.8,
         delay,
-        ease: [0.25, 0.25, 0, 1],
+        ease: [0.25, 0.25, 0, 1] as const,
       },
     };
   }

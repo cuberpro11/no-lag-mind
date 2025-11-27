@@ -37,7 +37,7 @@ export function PillarSection({
       transition: {
         duration: 0.8,
         delay: 0.2,
-        ease: [0.25, 0.25, 0, 1] as any,
+        ease: [0.25, 0.25, 0, 1] as const,
       },
     },
   };
@@ -50,7 +50,7 @@ export function PillarSection({
       transition: {
         duration: 0.8,
         delay: 0.4,
-        ease: [0.25, 0.25, 0, 1] as any,
+        ease: [0.25, 0.25, 0, 1] as const,
       },
     },
   };

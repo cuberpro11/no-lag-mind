@@ -9,7 +9,6 @@ interface FeatureShowcaseProps {
   description: string;
   visual?: ReactNode;
   direction?: 'left' | 'right';
-  index: number;
 }
 
 export function FeatureShowcase({
@@ -17,7 +16,6 @@ export function FeatureShowcase({
   description,
   visual,
   direction = 'left',
-  index,
 }: FeatureShowcaseProps) {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -35,7 +33,7 @@ export function FeatureShowcase({
       transition: {
         duration: 0.8,
         delay: 0.2,
-        ease: [0.25, 0.25, 0, 1],
+        ease: [0.25, 0.25, 0, 1] as const,
       },
     },
   };
@@ -48,7 +46,7 @@ export function FeatureShowcase({
       transition: {
         duration: 0.8,
         delay: 0.3,
-        ease: [0.25, 0.25, 0, 1],
+        ease: [0.25, 0.25, 0, 1] as const,
       },
     },
   };

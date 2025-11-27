@@ -18,9 +18,11 @@ interface CircleData {
 
 export function Hero() {
   const [circles, setCircles] = useState<CircleData[]>([]);
+  const [mounted, setMounted] = useState(false);
 
+  // Generate circle data only on client side after mount to avoid hydration mismatch
   useEffect(() => {
-    // Generate circle data only on client side to avoid hydration mismatch
+    setMounted(true);
     const circleData: CircleData[] = Array.from({ length: 25 }, (_, i) => ({
       size: 4 + Math.random() * 12,
       left: Math.random() * 100,
@@ -57,33 +59,35 @@ export function Hero() {
       </div>
 
       {/* Abstract Animated Circles */}
-      <div className="absolute inset-0 opacity-20">
-        {circles.map((circle, i) => (
-          <motion.div
-            key={`circle-${i}`}
-            className="absolute rounded-full"
-            style={{
-              left: `${circle.left}%`,
-              top: `${circle.top}%`,
-              width: `${circle.size}px`,
-              height: `${circle.size}px`,
-              background: `rgba(${circle.color}, ${circle.opacity})`,
-            }}
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.3, 0.7, 0.3],
-              x: [0, circle.moveX],
-              y: [0, circle.moveY],
-            }}
-            transition={{
-              duration: circle.duration,
-              repeat: Infinity,
-              delay: circle.delay,
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
-      </div>
+      {mounted && (
+        <div className="absolute inset-0 opacity-20">
+          {circles.map((circle, i) => (
+            <motion.div
+              key={`circle-${i}`}
+              className="absolute rounded-full"
+              style={{
+                left: `${circle.left}%`,
+                top: `${circle.top}%`,
+                width: `${circle.size}px`,
+                height: `${circle.size}px`,
+                background: `rgba(${circle.color}, ${circle.opacity})`,
+              }}
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.3, 0.7, 0.3],
+                x: [0, circle.moveX],
+                y: [0, circle.moveY],
+              }}
+              transition={{
+                duration: circle.duration,
+                repeat: Infinity,
+                delay: circle.delay,
+                ease: 'easeInOut',
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <motion.h1

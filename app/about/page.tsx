@@ -54,7 +54,7 @@ export default function AboutPage() {
                 I love to make things and learn new things. I started this blog to benefit people with high-quality information in the best way possible.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
-                Everything you read here is written by me. I'm passionate about sharing what I learn and helping others work more efficiently, whether that's through productivity techniques, keyboard shortcuts, AI workflows, or building tools that make life easier.
+                Everything you read here is written by me. I&apos;m passionate about sharing what I learn and helping others work more efficiently, whether that&apos;s through productivity techniques, keyboard shortcuts, AI workflows, or building tools that make life easier.
               </p>
             </div>
 

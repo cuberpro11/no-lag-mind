@@ -22,12 +22,11 @@ export default function NoteAppPage() {
         title="Wikilinks & Backlinks"
         description="Create bidirectional links between notes with [[Note Name]] syntax. Every link automatically creates a backlink, building a web of connected knowledge. Search backlinks instantly to see how ideas connect across your vault."
         direction="left"
-        index={0}
         visual={
           <div className="bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-2xl border border-white/10 p-6 font-mono text-sm">
             <div className="text-gray-400 mb-4">Project Ideas.md</div>
             <div className="space-y-2 text-white">
-              <div>I'm working on a new <span className="text-cyan-400 bg-cyan-400/20 px-2 py-1 rounded">[[Product Launch]]</span> strategy.</div>
+              <div>I&apos;m working on a new <span className="text-cyan-400 bg-cyan-400/20 px-2 py-1 rounded">[[Product Launch]]</span> strategy.</div>
               <div className="mt-4 pt-4 border-t border-white/10">
                 <div className="text-gray-400 text-xs mb-2">Backlinks (3):</div>
                 <div className="space-y-1">
@@ -46,7 +45,6 @@ export default function NoteAppPage() {
         title="Slash Commands"
         description="Type / to instantly insert headings, todos, code blocks, and more. No need to remember markdown syntax—just type and go. Work at the speed of thought without breaking your flow."
         direction="right"
-        index={1}
         visual={
           <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl border border-white/10 p-6 font-mono text-sm">
             <div className="text-gray-400 mb-4">Quick Note.md</div>
@@ -67,7 +65,6 @@ export default function NoteAppPage() {
         title="Custom Properties System"
         description="Add metadata to your notes with custom properties. Use text, numbers, booleans, dates, tags, and lists with autocomplete. Organize and filter your knowledge like never before."
         direction="left"
-        index={2}
         visual={
           <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-2xl border border-white/10 p-6">
             <div className="text-gray-400 mb-4 text-sm font-mono">Properties Panel</div>

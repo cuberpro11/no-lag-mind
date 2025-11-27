@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { ScrollReveal } from '@/lib/animations/scroll-reveal';
-import { useEffect, useState } from 'react';
 
 const stats = [
   { value: '3x', label: 'Faster Workflow', description: 'Average speed increase' },
@@ -12,7 +11,6 @@ const stats = [
 ];
 
 export function StatsSection() {
-  const [counted, setCounted] = useState(false);
 
   return (
     <section className="py-24 relative overflow-hidden">
@@ -20,7 +18,7 @@ export function StatsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal direction="fade">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            <span className="gradient-text">The Numbers</span> Don't Lie
+            <span className="gradient-text">The Numbers</span> Don&apos;t Lie
           </h2>
         </ScrollReveal>
 

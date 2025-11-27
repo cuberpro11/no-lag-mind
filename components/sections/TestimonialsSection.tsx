@@ -46,7 +46,7 @@ export function TestimonialsSection() {
               >
                 <div className="text-4xl mb-4">{testimonial.avatar}</div>
                 <p className="text-gray-300 mb-6 leading-relaxed italic">
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </p>
                 <div className="border-t border-white/10 pt-4">
                   <div className="font-semibold text-white">{testimonial.author}</div>
