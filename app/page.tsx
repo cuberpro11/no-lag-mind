@@ -2,6 +2,12 @@ import { Hero } from '@/components/sections/Hero';
 import { PillarSection } from '@/components/sections/PillarSection';
 import { PillarsShowcase } from '@/components/sections/PillarsShowcase';
 import { Footer } from '@/components/Footer';
+import {
+  KeyboardShortcutsGraphic,
+  CognitiveFlowGraphic,
+  WordsPerMinuteGraphic,
+  AIToolsGraphic,
+} from '@/components/sections/SlideGraphics';
 
 export default function Home() {
   return (
@@ -15,6 +21,7 @@ export default function Home() {
         direction="left"
         index={0}
         showNoClickBadge={true}
+        graphic={<KeyboardShortcutsGraphic />}
       />
 
       {/* Cognitive Flow */}
@@ -24,6 +31,7 @@ export default function Home() {
         direction="right"
         index={1}
         showNoClickBadge={true}
+        graphic={<CognitiveFlowGraphic />}
       />
 
       {/* Words Per Minute */}
@@ -33,6 +41,7 @@ export default function Home() {
         direction="left"
         index={2}
         showNoClickBadge={true}
+        graphic={<WordsPerMinuteGraphic />}
       />
 
       {/* AI Tools */}
@@ -41,6 +50,7 @@ export default function Home() {
         description="Amplify your capabilities with AI. Let artificial intelligence handle routine tasks while you focus on what matters. Work smarter, not harder."
         direction="right"
         index={3}
+        graphic={<AIToolsGraphic />}
       />
 
       {/* Pillars Showcase - Split Screen */}

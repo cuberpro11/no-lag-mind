@@ -2,8 +2,10 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export function Navbar() {
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,9 +24,39 @@ export function Navbar() {
             <Link href="/" className="text-gray-300 hover:text-white transition-colors">
               Home
             </Link>
-            <Link href="/note-app" className="text-gray-300 hover:text-white transition-colors">
-              Note App
-            </Link>
+            
+            {/* Products Dropdown */}
+            <div 
+              className="relative group"
+              onMouseEnter={() => setIsProductsOpen(true)}
+              onMouseLeave={() => setIsProductsOpen(false)}
+            >
+              <button className="text-gray-300 hover:text-white transition-colors flex items-center">
+                Products
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              {/* Dropdown Menu */}
+              {isProductsOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute left-0 mt-0 w-48 bg-gray-900 border border-white/10 rounded-lg shadow-lg py-2 z-50"
+                >
+                  <Link
+                    href="/note-app"
+                    className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
+                  >
+                    Note App
+                  </Link>
+                </motion.div>
+              )}
+            </div>
+            
             <Link href="/blog" className="text-gray-300 hover:text-white transition-colors">
               Blog
             </Link>
