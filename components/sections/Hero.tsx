@@ -105,7 +105,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
         >
-          Work at the speed of thought. Master your toolkit, optimize your workflow, and eliminate digital friction.
+          Learn to work at the speed of thought.
         </motion.p>
 
         <motion.div
