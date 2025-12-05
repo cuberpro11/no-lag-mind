@@ -79,6 +79,12 @@ export function Navbar() {
                   >
                     Note App
                   </Link>
+                  <Link
+                    href="/course"
+                    className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
+                  >
+                    Productivity Course
+                  </Link>
                 </motion.div>
               )}
             </div>
@@ -174,6 +180,13 @@ export function Navbar() {
                       className="block px-3 py-2 pl-5 text-gray-300 hover:text-white hover:bg-white/5"
                     >
                       Note App
+                    </Link>
+                    <Link
+                      href="/course"
+                      onClick={closeMobile}
+                      className="block px-3 py-2 pl-5 text-gray-300 hover:text-white hover:bg-white/5"
+                    >
+                      Productivity Course
                     </Link>
                   </div>
                 )}

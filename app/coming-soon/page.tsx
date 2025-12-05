@@ -20,6 +20,11 @@ export default function ComingSoonPage() {
     threshold: 0.2,
   });
 
+  const [courseRef, courseInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
   return (
     <main className="bg-black min-h-screen">
       {/* Hero Section */}
@@ -44,6 +49,64 @@ export default function ComingSoonPage() {
           >
             Exciting new tools to help you work at the speed of thought
           </motion.p>
+        </div>
+      </section>
+
+      {/* Use Mac 10× Faster: Productivity Course */}
+      <section
+        ref={courseRef}
+        className="py-32 relative overflow-hidden bg-black"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16">
+            {/* Visual Representation */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={courseInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+              transition={{ duration: 0.8 }}
+              className="flex-1 w-full"
+            >
+              <div className="bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-2xl border border-white/10 p-8">
+                <div className="space-y-4">
+                  <div className="p-4 bg-black rounded-lg border border-cyan-500/30">
+                    <div className="text-cyan-400 font-semibold mb-2">1. Keyboard Shortcuts</div>
+                    <p className="text-sm text-gray-300">Work faster and do things in less keystrokes or clicks.</p>
+                  </div>
+                  <div className="p-4 bg-black rounded-lg border border-purple-500/30">
+                    <div className="text-purple-400 font-semibold mb-2">2. Cognitive Load</div>
+                    <p className="text-sm text-gray-300">Learn to use tools really fast without thinking—minimal config, maximum flow.</p>
+                  </div>
+                  <div className="p-4 bg-black rounded-lg border border-blue-500/30">
+                    <div className="text-blue-400 font-semibold mb-2">3. WPM ‑ Typing Speed</div>
+                    <p className="text-sm text-gray-300">Faster typing means faster keyboard work and faster overall productivity.</p>
+                  </div>
+                  <div className="p-4 bg-black rounded-lg border border-green-500/30">
+                    <div className="text-green-400 font-semibold mb-2">4. AI Integration</div>
+                    <p className="text-sm text-gray-300">Leverage AI for tedious tasks, heavy lifting, and accelerated learning.</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={courseInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+              transition={{ duration: 0.8 }}
+              className="flex-1"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Use Mac 10× Faster: Productivity Course</h2>
+              <p className="text-xl text-gray-300 leading-relaxed mb-4">
+                A focused course that teaches you how to type faster, use your Mac faster, and work at the speed of thought—built on the five pillars of productivity.
+              </p>
+              <ul className="text-gray-300 space-y-2 mb-6">
+                <li className="flex items-start gap-2"><span className="text-cyan-400 mt-1">✓</span><span>Typing acceleration: accuracy and WPM that keep up with your ideas</span></li>
+                <li className="flex items-start gap-2"><span className="text-cyan-400 mt-1">✓</span><span>Mac mastery: shortcuts, automation, and frictionless navigation</span></li>
+                <li className="flex items-start gap-2"><span className="text-cyan-400 mt-1">✓</span><span>Operational system to maintain cognitive flow</span></li>
+              </ul>
+              <div className="mt-6 inline-block px-4 py-2 bg-cyan-500/20 border border-cyan-500/50 rounded-lg text-cyan-400 text-sm font-semibold">Coming Soon</div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
