@@ -39,22 +39,17 @@ export default function Home() {
 
   return (
     <main className="bg-black">
-      {/* ===== HERO SECTION ===== */}
-      <section className="h-[90vh] flex items-center justify-center relative overflow-hidden bg-black snap-start">
+      {/* ===== HERO ===== */}
+      <section className="h-[92vh] flex items-center justify-center relative overflow-hidden bg-black snap-start">
         {/* Animated background gradient */}
         <div className="absolute inset-0">
           <motion.div
             className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-blue-500/10 to-purple-500/20"
-            animate={{
-              backgroundPosition: ['0% 0%', '100% 100%'],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              repeatType: 'reverse',
-            }}
+            animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
+            transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
             style={{
-              backgroundImage: 'radial-gradient(circle at 30% 50%, rgba(6, 182, 212, 0.3) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)',
+              backgroundImage:
+                'radial-gradient(circle at 30% 50%, rgba(6, 182, 212, 0.3) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)',
               backgroundSize: '200% 200%',
             }}
           />
@@ -96,236 +91,200 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-7xl md:text-8xl font-bold text-white mb-6 tracking-tight"
+            className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight"
           >
             No Lag Mind
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed"
           >
-            No Lag Mind helps you cut digital friction. Learn faster, use tools better, and leverage AI to get more done.
+            Tools, tactics, and tiny apps that make your computer feel instant.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto"
-          >
-            <p>Explore practical guides, free tools, and simple workflows you can apply right away.</p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 justify-center items-center"
           >
             <Link href="/blog">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-cyan-500/50 hover:shadow-xl transition-all w-full sm:w-auto"
+                className="px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-cyan-500/50 hover:shadow-xl transition-all w-full sm:w-auto"
               >
                 Explore the Blog →
               </motion.button>
             </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ===== ABOUT SECTION ===== */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="space-y-8"
-          >
-            <div className="mb-8">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-                A hub for <span className="gradient-text">skills and tools</span>
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="p-6 rounded-xl bg-white/5 backdrop-blur border border-white/10 hover:border-cyan-500/30 transition-all hover:bg-white/10"
-              >
-                <div className="text-4xl mb-4">📚</div>
-                <h3 className="text-xl font-semibold text-white mb-2">Deep insights</h3>
-                <p className="text-gray-400">Clear, actionable posts on productivity, tools, and learning.</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="p-6 rounded-xl bg-white/5 backdrop-blur border border-white/10 hover:border-cyan-500/30 transition-all hover:bg-white/10"
-              >
-                <div className="text-4xl mb-4">⚡</div>
-                <h3 className="text-xl font-semibold text-white mb-2">Learn the apps</h3>
-                <p className="text-gray-400">Lessons to use Raycast, Karabiner‑Elements, Aerospace, Homerow, Gemini, and more—faster and better.</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="p-6 rounded-xl bg-white/5 backdrop-blur border border-white/10 hover:border-cyan-500/30 transition-all hover:bg-white/10"
-              >
-                <div className="text-4xl mb-4">🚀</div>
-                <h3 className="text-xl font-semibold text-white mb-2">Always improving</h3>
-                <p className="text-gray-400">New content and updates as I build in public.</p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ===== BLOG (PRIMARY) ===== */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-transparent to-purple-500/5" />
-        <div className="max-w-5xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center"
-          >
-            <div className="text-6xl mx-auto mb-6">📖</div>
-            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">Start with the blog</h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-8 leading-relaxed">
-              The core of No Lag Mind: practical guides, shortcuts, tool breakdowns, and AI how‑tos. Learn skills you can use today—with mostly free tools.
-            </p>
-            <Link href="/blog">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-cyan-500/50 hover:shadow-xl transition-all"
-              >
-                Explore the Blog →
-              </motion.button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ===== NOTE APP SECTION ===== */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-purple-950/10 relative overflow-hidden">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center"
-          >
-            <div className="text-6xl mx-auto mb-6">📄</div>
-            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">Lightning‑fast note app</h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Capture ideas instantly. Simple, fast, and free. Organize your thoughts and build your knowledge base without friction.
-            </p>
             <Link href="/note-app">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg shadow-lg shadow-purple-500/50 hover:shadow-xl transition-all"
+                className="px-6 py-3 md:px-8 md:py-4 bg-transparent border-2 border-white/15 text-white font-semibold rounded-lg hover:border-cyan-500/40 hover:bg-white/5 transition-all w-full sm:w-auto"
               >
-                Learn More →
+                Try the Note App →
               </motion.button>
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* ===== PRODUCTS (AFFORDABLE) ===== */}
+      {/* ===== WHY THIS EXISTS ===== */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
+            className="grid md:grid-cols-2 gap-10 items-center"
+          >
+            <div className="space-y-6 text-center md:text-left">
+              <h2 className="text-4xl md:text-5xl font-bold text-white">
+                The philosophy
+              </h2>
+              <p className="text-lg text-gray-400 leading-relaxed">
+                Most setups add friction with too many clicks, too many menus, and a messy interface. Here, at No Lag Mind, I teach you how to setup your tools and workflows in a way that empowers you and keeps you in the flow state; your laptop will feel like an extension of you, with low cognitive load and tools that work with you instead of against you.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-4">
+              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+                <div className="text-2xl mb-2">⚡ Be instant</div>
+                <p className="text-gray-400">Muscle‑memory workflows that feel like thought → action.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+                <div className="text-2xl mb-2">🎯 Stay in flow</div>
+                <p className="text-gray-400">Fewer decisions, fewer windows, fewer detours.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+                <div className="text-2xl mb-2">🧭 Clarity first</div>
+                <p className="text-gray-400">Know your next move at a glance. The system gets out of the way.</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== WHAT YOU'LL FIND ===== */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, margin: '-100px' }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Practical products, fair prices</h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-10">Lightweight tools that save time and pay for themselves quickly.</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">What you'll find here</h2>
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+              A tight mix of guides, verified workflows, and small tools—each designed to remove one more obstacle
+              between you and done.
+            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="p-6 rounded-xl bg-white/5 backdrop-blur border border-white/10 hover:border-cyan-500/30 transition-all hover:bg-white/10"
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/30 hover:bg-white/10 transition-all"
             >
-              <div className="text-4xl mb-4">🧮</div>
-              <h3 className="text-xl font-semibold text-white mb-2">Smarter and Faster Calculator</h3>
-              <p className="text-gray-400">Advanced calculations with speed and simplicity.</p>
+              <div className="text-4xl mb-3">📚</div>
+              <h3 className="text-xl font-semibold text-white mb-2">Guides that actually ship</h3>
+              <p className="text-gray-400">Clear, step‑by‑step posts on macOS, AI, and speed tactics.</p>
             </motion.div>
-
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.05 }}
+              viewport={{ once: true }}
+              className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/30 hover:bg-white/10 transition-all"
+            >
+              <div className="text-4xl mb-3">🛠️</div>
+              <h3 className="text-xl font-semibold text-white mb-2">Tiny tools with big impact</h3>
+              <p className="text-gray-400">Lightweight utilities that remove friction you feel every day.</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="p-6 rounded-xl bg-white/5 backdrop-blur border border-white/10 hover:border-cyan-500/30 transition-all hover:bg-white/10"
+              viewport={{ once: true }}
+              className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/30 hover:bg-white/10 transition-all"
             >
-              <div className="text-4xl mb-4">🎨</div>
-              <h3 className="text-xl font-semibold text-white mb-2">Vibe Coding Prompt Generator</h3>
-              <p className="text-gray-400">Plan your project and generate AI prompts for consistent results.</p>
+              <div className="text-4xl mb-3">🚀</div>
+              <h3 className="text-xl font-semibold text-white mb-2">Verified workflows</h3>
+              <p className="text-gray-400">Battle‑tested sequences I use daily to make computers feel instant.</p>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="p-6 rounded-xl bg-white/5 backdrop-blur border border-white/10 hover:border-cyan-500/30 transition-all hover:bg-white/10"
-            >
-              <div className="text-4xl mb-4">📚</div>
-              <h3 className="text-xl font-semibold text-white mb-2">Use Mac 10× Faster: Productivity Course</h3>
-              <p className="text-gray-400">Learn keyboard shortcuts, automation, and work at the speed of thought.</p>
-            </motion.div>
-          </div>
-
-          <div className="text-center mt-10">
-            <Link href="/coming-soon" className="text-cyan-400 font-semibold hover:underline">See roadmap and release timeline →</Link>
           </div>
         </div>
       </section>
 
-      {/* ===== COMING SOON SECTION ===== */}
+      {/* ===== CHOOSE YOUR NEXT CLICK ===== */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-purple-950/10 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Choose your next click</h2>
+            <p className="text-lg text-gray-400">Short, scannable, and mobile‑friendly—jump in anywhere.</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <Link href="/blog" className="group">
+              <div className="p-6 rounded-2xl bg-white/5 border border-white/10 group-hover:border-cyan-500/30 group-hover:bg-white/10 transition-all h-full flex flex-col">
+                <div className="text-4xl mb-3">📖</div>
+                <h3 className="text-xl font-semibold text-white mb-2">Start with the Blog</h3>
+                <p className="text-gray-400 mb-4">Guides, shortcuts, and AI how‑tos you can use today.</p>
+                <span className="mt-auto text-cyan-400 font-semibold">Read articles →</span>
+              </div>
+            </Link>
+
+            <Link href="/note-app" className="group">
+              <div className="p-6 rounded-2xl bg-white/5 border border-white/10 group-hover:border-purple-500/30 group-hover:bg-white/10 transition-all h-full flex flex-col">
+                <div className="text-4xl mb-3">🗒️</div>
+                <h3 className="text-xl font-semibold text-white mb-2">Lightning‑fast Notes</h3>
+                <p className="text-gray-400 mb-4">Capture ideas instantly and stay in flow.</p>
+                <span className="mt-auto text-purple-400 font-semibold">Open the app →</span>
+              </div>
+            </Link>
+
+            <Link href="/course" className="group">
+              <div className="p-6 rounded-2xl bg-white/5 border border-white/10 group-hover:border-blue-500/30 group-hover:bg-white/10 transition-all h-full flex flex-col">
+                <div className="text-4xl mb-3">🎓</div>
+                <h3 className="text-xl font-semibold text-white mb-2">Work 10× Faster</h3>
+                <p className="text-gray-400 mb-4">Master macOS and build muscle‑memory workflows.</p>
+                <span className="mt-auto text-blue-400 font-semibold">See the course →</span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== WHAT'S NEXT ===== */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent" />
-        
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             className="text-center"
           >
             <div className="text-6xl mx-auto mb-6 animate-pulse">✨</div>
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">What's next</h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-8 leading-relaxed">
-              More articles, utilities, and a structured course are on the way. Follow along for updates.
+              More articles, utilities, and a structured course are on the way. If something would help you right now,
+              let me know—I'll build it.
             </p>
             <Link href="/coming-soon">
               <motion.button
@@ -333,7 +292,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-transparent border-2 border-cyan-500/50 text-cyan-400 font-semibold rounded-lg hover:border-cyan-500 hover:bg-cyan-500/10 transition-all"
               >
-                What's Coming Next →
+                See the roadmap →
               </motion.button>
             </Link>
           </motion.div>
