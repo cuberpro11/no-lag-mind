@@ -25,6 +25,16 @@ export default function ComingSoonPage() {
     threshold: 0.2,
   });
 
+  const [fileManagerRef, fileManagerInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  const [typingCourseRef, typingCourseInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
   return (
     <main className="bg-black min-h-screen">
       {/* Hero Section */}
@@ -49,6 +59,223 @@ export default function ComingSoonPage() {
           >
             Exciting new tools to help you work at the speed of thought
           </motion.p>
+        </div>
+      </section>
+
+      {/* FlowFiles: Lightning-Fast File Manager */}
+      <section
+        ref={fileManagerRef}
+        className="py-32 relative overflow-hidden bg-black"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            {/* Visual Representation */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={fileManagerInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+              transition={{ duration: 0.8 }}
+              className="flex-1 w-full"
+            >
+              <div className="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-2xl border border-white/10 p-8">
+                <div className="bg-black rounded-lg p-6 border border-white/10">
+                  <div className="flex gap-2 mb-4">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                  </div>
+                  <div className="font-mono text-sm space-y-2">
+                    <div className="text-gray-400 mb-3">FlowFiles/</div>
+                    <div className="flex items-center gap-2 text-emerald-400">
+                      <span>⚡</span>
+                      <span>📁 projects/</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-emerald-400 ml-4">
+                      <span>⚡</span>
+                      <span>📄 app.tsx</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-teal-400 ml-4">
+                      <span>🔗</span>
+                      <span className="text-xs text-gray-500">→ VS Code</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-emerald-400">
+                      <span>⚡</span>
+                      <span>📁 scripts/</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-teal-400 ml-4">
+                      <span>🔗</span>
+                      <span className="text-xs text-gray-500">→ Terminal</span>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-emerald-500/30">
+                      <div className="text-xs text-gray-500">⌨️ Custom shortcuts enabled</div>
+                      <div className="text-xs text-gray-500">🎯 One-step workflows active</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={fileManagerInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+              transition={{ duration: 0.8 }}
+              className="flex-1"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                FlowFiles: Lightning-Fast File Manager
+              </h2>
+              <p className="text-xl text-gray-300 leading-relaxed mb-4">
+                The fastest file manager built to integrate seamlessly with your workflow. Manipulate files and folders at lightning speed while staying connected to your code editors and terminals.
+              </p>
+              <p className="text-lg text-gray-400 leading-relaxed mb-6">
+                Work the way you want with extreme customization. Use the mouse, keyboard shortcuts, or both—everything is designed for one-step workflows that keep you in the flow.
+              </p>
+              <ul className="text-gray-300 space-y-2 mb-6">
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-400 mt-1">✓</span>
+                  <span>Lightning-fast file and folder manipulation</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-400 mt-1">✓</span>
+                  <span>Seamless integration with code editors and terminals</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-400 mt-1">✓</span>
+                  <span>Fully customizable: mouse or keyboard shortcuts</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-400 mt-1">✓</span>
+                  <span>One-step workflows for maximum productivity</span>
+                </li>
+              </ul>
+              <Link href="/flowfiles">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-6 inline-flex items-center px-4 py-2 bg-emerald-500/20 border border-emerald-500/50 rounded-lg text-emerald-400 text-sm font-semibold transition-all"
+                >
+                  <span>Learn More</span>
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </motion.button>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* TypeMaster: Reach Top 1% Typing Speed */}
+      <section
+        ref={typingCourseRef}
+        className="py-32 relative overflow-hidden bg-black"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16">
+            {/* Visual Representation */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={typingCourseInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+              transition={{ duration: 0.8 }}
+              className="flex-1 w-full"
+            >
+              <div className="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl border border-white/10 p-8">
+                <div className="bg-black rounded-lg p-6 border border-orange-500/30">
+                  <div className="space-y-4">
+                    <div className="text-orange-400 font-semibold mb-4">Typing Performance</div>
+                    
+                    {/* WPM Indicator */}
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-400">Speed (WPM)</span>
+                        <span className="text-orange-400 font-bold">70 → 150</span>
+                      </div>
+                      <div className="h-3 bg-black rounded-full border border-orange-500/30 overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-orange-500 to-red-500 w-[47%]"></div>
+                      </div>
+                    </div>
+
+                    {/* Accuracy Meter */}
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-400">Accuracy</span>
+                        <span className="text-red-400 font-bold">84% → 99%</span>
+                      </div>
+                      <div className="h-3 bg-black rounded-full border border-red-500/30 overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-red-500 to-orange-500 w-[85%]"></div>
+                      </div>
+                    </div>
+
+                    {/* Muscle Memory */}
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-400">Muscle Memory</span>
+                        <span className="text-orange-400 font-bold">Building...</span>
+                      </div>
+                      <div className="h-3 bg-black rounded-full border border-orange-500/30 overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-orange-500/50 to-red-500/50 w-3/5"></div>
+                      </div>
+                    </div>
+
+                    {/* Adaptive Learning */}
+                    <div className="mt-4 pt-3 border-t border-orange-500/30">
+                      <div className="text-xs text-gray-400 mb-2">🎯 Adaptive Learning Active</div>
+                      <div className="text-xs text-gray-500">Common mistakes identified: 3</div>
+                      <div className="text-xs text-gray-500">Lessons customized to your needs</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={typingCourseInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+              transition={{ duration: 0.8 }}
+              className="flex-1"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                TypeMaster: Reach Top 1% Typing Speed
+              </h2>
+              <p className="text-xl text-gray-300 leading-relaxed mb-4">
+                An interactive course designed to take you from above-average to top 1% typing speed. Improve your accuracy and WPM while building the right muscle memory through adaptive lessons.
+              </p>
+              <p className="text-lg text-gray-400 leading-relaxed mb-6">
+                The course learns your mistakes and customizes lessons to match your needs. Get faster with minimal time investment—just by taking the course, you&apos;ll naturally improve.
+              </p>
+              <ul className="text-gray-300 space-y-2 mb-6">
+                <li className="flex items-start gap-2">
+                  <span className="text-orange-400 mt-1">✓</span>
+                  <span>Reach top 1% typing speed and accuracy</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-orange-400 mt-1">✓</span>
+                  <span>Build correct muscle memory through practice</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-orange-400 mt-1">✓</span>
+                  <span>Adaptive lessons that learn from your mistakes</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-orange-400 mt-1">✓</span>
+                  <span>Maximum results with minimal time investment</span>
+                </li>
+              </ul>
+              <Link href="/typemaster">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-6 inline-flex items-center px-4 py-2 bg-orange-500/20 border border-orange-500/50 rounded-lg text-orange-400 text-sm font-semibold transition-all"
+                >
+                  <span>Learn More</span>
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </motion.button>
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 
