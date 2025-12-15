@@ -1,6 +1,6 @@
 ---
 title: "Why you have to use a tiling window manager"
-date: 2025-12-13T00:00:00Z
+date: 2025-12-14T00:00:00Z
 draft: false
 ---
 ### Why your windows are a mess (and how to fix it)

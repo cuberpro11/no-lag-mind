@@ -8,6 +8,21 @@ interface BlogPostHeaderProps {
   date: string;
 }
 
+function formatDate(dateString: string): string {
+  // Parse the ISO date string and extract date components without timezone conversion
+  const date = new Date(dateString);
+  const year = date.getUTCFullYear();
+  const month = date.getUTCMonth();
+  const day = date.getUTCDate();
+  
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+  
+  return `${monthNames[month]} ${day}, ${year}`;
+}
+
 export function BlogPostHeader({ title, date }: BlogPostHeaderProps) {
   return (
     <>
@@ -31,11 +46,7 @@ export function BlogPostHeader({ title, date }: BlogPostHeaderProps) {
         transition={{ duration: 0.6, delay: 0.1 }}
         className="text-gray-400 text-lg"
       >
-        {new Date(date).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        })}
+        {formatDate(date)}
       </motion.time>
     </>
   );

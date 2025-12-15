@@ -13,6 +13,21 @@ interface BlogListProps {
   posts: BlogPost[];
 }
 
+function formatDate(dateString: string): string {
+  // Parse the ISO date string and extract date components without timezone conversion
+  const date = new Date(dateString);
+  const year = date.getUTCFullYear();
+  const month = date.getUTCMonth();
+  const day = date.getUTCDate();
+  
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+  
+  return `${monthNames[month]} ${day}, ${year}`;
+}
+
 export function BlogList({ posts }: BlogListProps) {
   return (
     <div className="space-y-4">
@@ -28,11 +43,7 @@ export function BlogList({ posts }: BlogListProps) {
               {post.title}
             </h2>
             <time className="text-gray-400 text-sm">
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
+              {formatDate(post.date)}
             </time>
           </motion.article>
         </Link>
