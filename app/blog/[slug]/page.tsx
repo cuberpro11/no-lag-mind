@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getPostBySlug, getAllSlugs } from '@/lib/blog';
-import { removeHugoShortcodes } from '@/lib/markdown';
+import { removeHugoShortcodes, normalizeMarkdownFormatting } from '@/lib/markdown';
 import { BlogPostHeader } from '@/components/blog/BlogPostHeader';
 import { BlogPostContent } from '@/components/blog/BlogPostContent';
 
@@ -23,7 +23,7 @@ export default async function BlogPostPage({
     notFound();
   }
 
-  const cleanedContent = removeHugoShortcodes(post.content);
+  const cleanedContent = normalizeMarkdownFormatting(removeHugoShortcodes(post.content));
 
   return (
     <main className="bg-black min-h-screen">
