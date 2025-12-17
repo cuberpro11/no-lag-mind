@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import Link from 'next/link';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import Link from "next/link";
 
 export default function AboutPage() {
   const [heroRef, heroInView] = useInView({
@@ -42,7 +42,9 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            animate={
+              contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+            }
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
@@ -51,10 +53,17 @@ export default function AboutPage() {
                 Who I Am
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                I love to make things and learn new things. I started this blog to benefit people with high-quality information in the best way possible.
+                I love to make things and learn new things. I started this blog
+                to benefit people with high-quality information in the best way
+                possible.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
-                Everything you read here is written by me. I&apos;m passionate about sharing what I learn and helping others work more efficiently, whether that&apos;s through productivity techniques, keyboard shortcuts, AI workflows, or building tools that make life easier.
+                Everything you read here comes from my own experience and
+                research testing and refining high‑speed workflows. I&apos;m
+                passionate about sharing what I learn and helping others work
+                more efficiently, whether that&apos;s through productivity
+                techniques, keyboard shortcuts, AI workflows, or building tools
+                that make life easier.
               </p>
             </div>
 
@@ -66,27 +75,36 @@ export default function AboutPage() {
                 <div className="flex items-start gap-4">
                   <div className="text-3xl">🚀</div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">Build Products</h3>
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      Build Products
+                    </h3>
                     <p className="text-gray-300">
-                      I create tools and applications that help people work faster and smarter.
+                      I create tools and applications that help people work
+                      faster and smarter.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="text-3xl">✍️</div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">Write & Teach</h3>
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      Write & Teach
+                    </h3>
                     <p className="text-gray-300">
-                      I share knowledge through blog posts, tutorials, and guides on productivity and workflow optimization.
+                      I share knowledge through blog posts, tutorials, and
+                      guides on productivity and workflow optimization.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="text-3xl">⚡</div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">Optimize Workflows</h3>
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      Optimize Workflows
+                    </h3>
                     <p className="text-gray-300">
-                      I help others master keyboard shortcuts, AI tools, and techniques to eliminate digital friction.
+                      I help others master keyboard shortcuts, AI tools, and
+                      techniques to eliminate digital friction.
                     </p>
                   </div>
                 </div>
@@ -98,17 +116,24 @@ export default function AboutPage() {
                 My Philosophy
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                I believe that with the right tools, techniques, and mindset, anyone can work at the speed of thought. The key is building muscle memory, eliminating unnecessary actions, and leveraging technology to amplify your capabilities.
+                I believe that with the right tools, techniques, and mindset,
+                anyone can work at the speed of thought. The key is building
+                muscle memory, eliminating unnecessary actions, and leveraging
+                technology to amplify your capabilities.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
-                Every click saved, every shortcut mastered, and every workflow optimized brings you closer to seamless productivity where your tools become an extension of your mind.
+                Every click saved, every shortcut mastered, and every workflow
+                optimized brings you closer to seamless productivity where your
+                tools become an extension of your mind.
               </p>
             </div>
 
             {/* CTA Section */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              animate={
+                contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+              }
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 justify-center pt-8"
             >
@@ -137,4 +162,3 @@ export default function AboutPage() {
     </main>
   );
 }
-
