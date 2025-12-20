@@ -9,7 +9,7 @@ I have heard about and tried a few note apps, but when one note app gets somethi
 
 Obsidian is the best that I tried because it allows me to do everything with the keyboard, it is fast and smooth to use, it is very flexible, and all notes are searchable and easy to link. However, it is not dynamic enough. This means that it is missing the ability to make mind maps, checklists where each item has properties, and a kanban mode. All these things are not direct deal breakers (which is why I have been using obsidian for a while) but it makes me have to use other apps if I want to manage my projects, take notes on a person, or plan a story.
 
-The issues that I have been having with obsidian lead me to doing some research on alternatives. The most promising one was Anytype. I loved the idea of everything being an object, the data sets you could make, and the customizability of the pages. However, it felt very clunky to use and most of the features required me to use a mouse to use. This slowed me down heavily and felt very off, compared to the fast markdown and vim mode of Obsidian.
+The issues that I have been having with obsidian lead me to doing some research on alternatives. The most promising one was Anytype. I loved the idea of everything being an object, the data sets you could make, and the customizability of the pages. However, it felt very clunky to use and most of the features required me to use a mouse. This slowed me down heavily and felt very off, compared to the fast markdown and vim mode of Obsidian.
 
 ### What will be the best note taking app then?
 
