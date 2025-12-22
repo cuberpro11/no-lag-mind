@@ -102,7 +102,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed"
           >
-            Tools, tactics, and tiny apps that make your computer feel instant.
+            Learn to work at the speed of thought.
           </motion.p>
 
           <motion.div
