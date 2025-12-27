@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
-export function Navbar() {
+function NavbarContent() {
   // Desktop dropdown (hover) state
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   // Mobile menu state
@@ -78,12 +79,6 @@ export function Navbar() {
                     className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
                   >
                     Note App
-                  </Link>
-                  <Link
-                    href="/flowfiles"
-                    className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
-                  >
-                    FlowFiles
                   </Link>
                   <Link
                     href="/typemaster"
@@ -194,13 +189,6 @@ export function Navbar() {
                       Note App
                     </Link>
                     <Link
-                      href="/flowfiles"
-                      onClick={closeMobile}
-                      className="block px-3 py-2 pl-5 text-gray-300 hover:text-white hover:bg-white/5"
-                    >
-                      FlowFiles
-                    </Link>
-                    <Link
                       href="/typemaster"
                       onClick={closeMobile}
                       className="block px-3 py-2 pl-5 text-gray-300 hover:text-white hover:bg-white/5"
@@ -245,4 +233,15 @@ export function Navbar() {
       )}
     </nav>
   );
+}
+
+export function Navbar() {
+  const pathname = usePathname();
+  
+  // Hide navbar on dashboard routes
+  if (pathname?.startsWith('/typemaster/dashboard')) {
+    return null;
+  }
+  
+  return <NavbarContent />;
 }
