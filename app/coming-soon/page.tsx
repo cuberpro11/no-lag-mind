@@ -223,7 +223,18 @@ export default function ComingSoonPage() {
                 <li className="flex items-start gap-2"><span className="text-cyan-400 mt-1">✓</span><span>Mac mastery: shortcuts, automation, and frictionless navigation</span></li>
                 <li className="flex items-start gap-2"><span className="text-cyan-400 mt-1">✓</span><span>Operational system to maintain cognitive flow</span></li>
               </ul>
-              <div className="mt-6 inline-block px-4 py-2 bg-cyan-500/20 border border-cyan-500/50 rounded-lg text-cyan-400 text-sm font-semibold">Coming Soon</div>
+              <Link href="/course">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-6 inline-flex items-center px-4 py-2 bg-cyan-500/20 border border-cyan-500/50 rounded-lg text-cyan-400 text-sm font-semibold transition-all"
+                >
+                  <span>Learn More</span>
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </motion.button>
+              </Link>
             </motion.div>
           </div>
         </div>

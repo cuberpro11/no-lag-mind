@@ -216,12 +216,12 @@ export default function TypeMasterPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="/coming-soon"
+                href="/typemaster/dashboard"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-lg shadow-lg shadow-orange-500/50 hover:shadow-xl transition-all w-full sm:w-auto text-lg"
               >
-                View All Coming Soon Projects
+                Take Course
               </motion.a>
             </div>
           </motion.div>
