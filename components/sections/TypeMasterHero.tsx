@@ -32,10 +32,10 @@ export function TypeMasterHero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight leading-tight"
         >
-          Type at the
+          Let your fingers
           <br />
           <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-            Speed of Thought
+            keep up with your mind
           </span>
         </motion.h1>
         
