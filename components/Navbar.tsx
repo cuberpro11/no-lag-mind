@@ -238,8 +238,8 @@ function NavbarContent() {
 export function Navbar() {
   const pathname = usePathname();
   
-  // Hide navbar on dashboard routes
-  if (pathname?.startsWith('/typemaster/dashboard')) {
+  // Hide navbar on dashboard routes and gramtype
+  if (pathname?.startsWith('/typemaster/dashboard') || pathname === '/gramtype') {
     return null;
   }
   
