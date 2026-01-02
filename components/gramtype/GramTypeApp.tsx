@@ -22,7 +22,7 @@ import { EndScreen } from './EndScreen';
 
 export function GramTypeApp() {
   const [mode, setMode] = useState<Mode>('MIXED');
-  const [length, setLength] = useState<number>(30);
+  const [length, setLength] = useState<number>(20);
   const [typingState, setTypingState] = useState<TypingState>(() =>
     initializeTypingState('') // Start with empty text to avoid hydration mismatch
   );
@@ -32,12 +32,14 @@ export function GramTypeApp() {
   const statsIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const typingStateRef = useRef<TypingState>(typingState);
   const isInitialized = useRef(false);
+  const lastBackspaceTime = useRef<number>(0);
+  const isProcessingBackspace = useRef<boolean>(false);
 
   // Initialize text on client side only to avoid hydration mismatch
   useEffect(() => {
     if (!isInitialized.current) {
-      // Use the initial length value (30) to avoid dependency issues
-      const initialText = generateText('MIXED', 30);
+      // Use the initial length value (20) to avoid dependency issues
+      const initialText = generateText('MIXED', 20);
       setTypingState(initializeTypingState(initialText));
       isInitialized.current = true;
     }
@@ -82,6 +84,9 @@ export function GramTypeApp() {
     setTypingState(resetTypingState(newText));
     setStats({ wpm: 0, accuracy: 100 });
     
+    // Reset input tracking
+    previousInputValue.current = '';
+    
     // Refocus input for touch devices, or container for desktop
     if (inputRef.current) {
       inputRef.current.value = '';
@@ -113,10 +118,20 @@ export function GramTypeApp() {
         return;
       }
 
-      // Handle backspace
-      if (e.key === 'Backspace') {
+      // Handle backspace and delete
+      if (e.key === 'Backspace' || e.key === 'Delete') {
         e.preventDefault();
-        setTypingState((prev) => handleBackspace(prev));
+        // Throttle backspace to one character per 150ms to prevent rapid deletions
+        const now = Date.now();
+        if (!isProcessingBackspace.current && now - lastBackspaceTime.current >= 150) {
+          isProcessingBackspace.current = true;
+          lastBackspaceTime.current = now;
+          setTypingState((prev) => handleBackspace(prev));
+          // Reset the flag after the throttle period to allow next deletion
+          setTimeout(() => {
+            isProcessingBackspace.current = false;
+          }, 150);
+        }
         return;
       }
 
@@ -143,29 +158,61 @@ export function GramTypeApp() {
     [handleRestart]
   );
 
+  // Track previous input value to detect deletions
+  const previousInputValue = useRef('');
+
   // Handle input from virtual keyboard (iPad/mobile)
   const handleInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    if (value.length === 0) return;
+    const prevValue = previousInputValue.current;
     
-    // Get the last character typed
-    const lastChar = value[value.length - 1];
-    
-    // Process the character
-    setTypingState((prev) => {
-      if (prev.currentPosition >= prev.text.length) {
-        return prev; // Already completed
+    // If value decreased, user deleted character(s)
+    // Handle one deletion at a time to prevent rapid deletions
+    if (value.length < prevValue.length) {
+      // Only process one deletion at a time, even if multiple were deleted
+      const now = Date.now();
+      if (!isProcessingBackspace.current && now - lastBackspaceTime.current >= 150) {
+        isProcessingBackspace.current = true;
+        lastBackspaceTime.current = now;
+        setTypingState((prev) => handleBackspace(prev));
+        // Reset the flag after the throttle period to allow next deletion
+        setTimeout(() => {
+          isProcessingBackspace.current = false;
+        }, 150);
       }
-      const newState = handleCharacterInput(prev, lastChar);
-      if (newState.currentPosition >= newState.text.length) {
-        return { ...newState, isActive: false };
-      }
-      return newState;
-    });
+      previousInputValue.current = value;
+      return;
+    }
     
-    // Clear the input to allow next character
-    if (inputRef.current) {
-      inputRef.current.value = '';
+    // If value increased, user typed a character
+    if (value.length > prevValue.length && value.length > 0) {
+      // Get the new character(s) - handle case where multiple characters might be pasted
+      const newChars = value.slice(prevValue.length);
+      const lastChar = newChars[newChars.length - 1];
+      
+      // Process the last character typed
+      setTypingState((prev) => {
+        if (prev.currentPosition >= prev.text.length) {
+          return prev; // Already completed
+        }
+        const newState = handleCharacterInput(prev, lastChar);
+        if (newState.currentPosition >= newState.text.length) {
+          return { ...newState, isActive: false };
+        }
+        return newState;
+      });
+    }
+    
+    // Update previous value
+    previousInputValue.current = value;
+    
+    // Clear the input to allow next character (but keep track of deletions)
+    if (inputRef.current && value.length > 0) {
+      // Only clear if we processed a new character
+      if (value.length > prevValue.length) {
+        inputRef.current.value = '';
+        previousInputValue.current = '';
+      }
     }
   }, []);
 
@@ -257,12 +304,29 @@ export function GramTypeApp() {
             spellCheck="false"
             onChange={handleInput}
             onKeyDown={(e) => {
-              // Handle backspace and tab
-              if (e.key === 'Backspace') {
+              // Handle backspace, delete, and tab
+              if (e.key === 'Backspace' || e.key === 'Delete') {
                 e.preventDefault();
-                setTypingState((prev) => handleBackspace(prev));
-                if (inputRef.current) {
-                  inputRef.current.value = '';
+                // Throttle backspace to one character per 150ms to prevent rapid deletions
+                const now = Date.now();
+                if (!isProcessingBackspace.current && now - lastBackspaceTime.current >= 150) {
+                  isProcessingBackspace.current = true;
+                  lastBackspaceTime.current = now;
+                  setTypingState((prev) => handleBackspace(prev));
+                  // Reset the flag after the throttle period to allow next deletion
+                  setTimeout(() => {
+                    isProcessingBackspace.current = false;
+                  }, 150);
+                  // Update the previous value ref to track deletion
+                  if (inputRef.current) {
+                    const currentValue = inputRef.current.value;
+                    if (currentValue.length > 0) {
+                      previousInputValue.current = currentValue.slice(0, -1);
+                    } else {
+                      previousInputValue.current = '';
+                    }
+                    inputRef.current.value = previousInputValue.current;
+                  }
                 }
               } else if (e.key === 'Tab') {
                 e.preventDefault();

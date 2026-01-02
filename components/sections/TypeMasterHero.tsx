@@ -54,13 +54,13 @@ export function TypeMasterHero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <Link href="/typemaster/dashboard">
+          <Link href="/note-app">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-lg shadow-lg shadow-orange-500/50 hover:shadow-xl transition-all w-full sm:w-auto text-lg"
             >
-              Take Course
+              Learn More About Note App
             </motion.button>
           </Link>
           <Link href="/blog">

@@ -92,6 +92,12 @@ function NavbarContent() {
                   >
                     Productivity Course
                   </Link>
+                  <Link
+                    href="/gramtype"
+                    className="block px-4 py-2 text-gray-300 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"
+                  >
+                    Gram Type
+                  </Link>
                 </motion.div>
               )}
             </div>
@@ -202,6 +208,13 @@ function NavbarContent() {
                     >
                       Productivity Course
                     </Link>
+                    <Link
+                      href="/gramtype"
+                      onClick={closeMobile}
+                      className="block px-3 py-2 pl-5 text-gray-300 hover:text-purple-400 hover:bg-purple-500/10"
+                    >
+                      Gram Type
+                    </Link>
                   </div>
                 )}
               </div>
@@ -238,8 +251,8 @@ function NavbarContent() {
 export function Navbar() {
   const pathname = usePathname();
   
-  // Hide navbar on dashboard routes and gramtype
-  if (pathname?.startsWith('/typemaster/dashboard') || pathname === '/gramtype') {
+  // Hide navbar on gramtype
+  if (pathname === '/gramtype') {
     return null;
   }
   
