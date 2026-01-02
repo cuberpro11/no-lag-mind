@@ -28,6 +28,7 @@ export function GramTypeApp() {
   );
   const [stats, setStats] = useState({ wpm: 0, accuracy: 100 });
   const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const statsIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const typingStateRef = useRef<TypingState>(typingState);
   const isInitialized = useRef(false);
@@ -81,8 +82,11 @@ export function GramTypeApp() {
     setTypingState(resetTypingState(newText));
     setStats({ wpm: 0, accuracy: 100 });
     
-    // Refocus container
-    if (containerRef.current) {
+    // Refocus input for touch devices, or container for desktop
+    if (inputRef.current) {
+      inputRef.current.value = '';
+      inputRef.current.focus();
+    } else if (containerRef.current) {
       containerRef.current.focus();
     }
   }, [mode, length]);
@@ -139,10 +143,38 @@ export function GramTypeApp() {
     [handleRestart]
   );
 
+  // Handle input from virtual keyboard (iPad/mobile)
+  const handleInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value.length === 0) return;
+    
+    // Get the last character typed
+    const lastChar = value[value.length - 1];
+    
+    // Process the character
+    setTypingState((prev) => {
+      if (prev.currentPosition >= prev.text.length) {
+        return prev; // Already completed
+      }
+      const newState = handleCharacterInput(prev, lastChar);
+      if (newState.currentPosition >= newState.text.length) {
+        return { ...newState, isActive: false };
+      }
+      return newState;
+    });
+    
+    // Clear the input to allow next character
+    if (inputRef.current) {
+      inputRef.current.value = '';
+    }
+  }, []);
+
   // Set up keyboard listeners
   useEffect(() => {
-    // Focus the container on mount
-    if (containerRef.current) {
+    // Focus the input field on mount for touch devices
+    if (inputRef.current) {
+      inputRef.current.focus();
+    } else if (containerRef.current) {
       containerRef.current.focus();
     }
 
@@ -208,12 +240,42 @@ export function GramTypeApp() {
           <StatsCards wpm={stats.wpm} accuracy={stats.accuracy} />
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 relative">
           <TypingArea
             text={typingState.text}
             typedText={typingState.typedText}
             currentPosition={typingState.currentPosition}
             errors={typingState.errors}
+          />
+          {/* Hidden input for iPad/mobile virtual keyboard - positioned over typing area */}
+          <input
+            ref={inputRef}
+            type="text"
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+            onChange={handleInput}
+            onKeyDown={(e) => {
+              // Handle backspace and tab
+              if (e.key === 'Backspace') {
+                e.preventDefault();
+                setTypingState((prev) => handleBackspace(prev));
+                if (inputRef.current) {
+                  inputRef.current.value = '';
+                }
+              } else if (e.key === 'Tab') {
+                e.preventDefault();
+                handleRestart();
+              }
+            }}
+            onClick={(e) => {
+              // Prevent clicks from bubbling, but allow focus
+              e.stopPropagation();
+            }}
+            className="absolute inset-0 opacity-0 w-full h-full cursor-text"
+            aria-label="Typing input"
+            tabIndex={0}
           />
         </div>
 
