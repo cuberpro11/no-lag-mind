@@ -35,12 +35,11 @@ export function GramTypeApp() {
   // Initialize text on client side only to avoid hydration mismatch
   useEffect(() => {
     if (!isInitialized.current) {
-      const initialText = generateText('MIXED', length);
+      // Use the initial length value (30) to avoid dependency issues
+      const initialText = generateText('MIXED', 30);
       setTypingState(initializeTypingState(initialText));
       isInitialized.current = true;
     }
-    // Only run once on mount - length is captured in closure
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Keep ref in sync with state
