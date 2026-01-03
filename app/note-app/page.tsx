@@ -251,15 +251,6 @@ export default function NoteAppPage() {
                 </svg>
                 Download for macOS (Apple Silicon) v0.1.0
               </motion.a>
-              <motion.a
-                href="/downloads/No Lag Mind Note App_macOS.zip"
-                download="No Lag Mind Note App_macOS.zip"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-transparent border-2 border-white/15 text-white font-semibold rounded-lg hover:border-cyan-500/40 hover:bg-white/5 transition-all w-full sm:w-auto text-lg"
-              >
-                Download the App v0.1.0
-              </motion.a>
             </div>
             <p className="text-sm text-gray-400 mt-4">
               Note: This is an unsigned app. On first launch, right-click and select "Open" or allow it in System Settings → Privacy & Security.
