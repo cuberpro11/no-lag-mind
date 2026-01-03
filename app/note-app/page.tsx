@@ -225,18 +225,45 @@ export default function NoteAppPage() {
               Ready to Work at the Speed of Thought?
             </h2>
             <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-              Learn about the philosophy and vision behind the app.
+              Download the macOS app and start capturing ideas instantly.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="/blog/sixth_post"
+                href="/downloads/No Lag Mind Note App_macOS.zip"
+                download="No Lag Mind Note App_macOS.zip"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-cyan-500/50 hover:shadow-xl transition-all w-full sm:w-auto text-lg"
+                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-cyan-500/50 hover:shadow-xl transition-all w-full sm:w-auto text-lg flex items-center justify-center gap-2"
               >
-                Philosophy Behind the App
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+                Download for macOS (Apple Silicon) v0.1.0
+              </motion.a>
+              <motion.a
+                href="/downloads/No Lag Mind Note App_macOS.zip"
+                download="No Lag Mind Note App_macOS.zip"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-transparent border-2 border-white/15 text-white font-semibold rounded-lg hover:border-cyan-500/40 hover:bg-white/5 transition-all w-full sm:w-auto text-lg"
+              >
+                Download the App v0.1.0
               </motion.a>
             </div>
+            <p className="text-sm text-gray-400 mt-4">
+              Note: This is an unsigned app. On first launch, right-click and select "Open" or allow it in System Settings → Privacy & Security.
+            </p>
           </motion.div>
         </div>
       </section>

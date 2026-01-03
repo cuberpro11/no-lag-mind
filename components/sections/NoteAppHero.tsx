@@ -54,15 +54,15 @@ export function NoteAppHero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <Link href="/blog/sixth_post">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-cyan-500/50 hover:shadow-xl transition-all w-full sm:w-auto text-lg"
-            >
-              Philosophy Behind the App
-            </motion.button>
-          </Link>
+          <motion.a
+            href="/downloads/No Lag Mind Note App_macOS.zip"
+            download="No Lag Mind Note App_macOS.zip"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-cyan-500/50 hover:shadow-xl transition-all w-full sm:w-auto text-lg"
+          >
+            Download the App v0.1.0
+          </motion.a>
           <Link href="/blog">
             <motion.button
               whileHover={{ scale: 1.05 }}
