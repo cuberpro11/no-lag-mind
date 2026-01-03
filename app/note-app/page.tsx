@@ -6,6 +6,7 @@ import { FeatureGroup } from '@/components/sections/FeatureGroup';
 import { Footer } from '@/components/Footer';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import Link from 'next/link';
 
 export default function NoteAppPage() {
   const [ctaRef, ctaInView] = useInView({
@@ -228,29 +229,29 @@ export default function NoteAppPage() {
               Download the macOS app and start capturing ideas instantly.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                href="/downloads/No Lag Mind Note App_macOS.zip"
-                download="No Lag Mind Note App_macOS.zip"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-cyan-500/50 hover:shadow-xl transition-all w-full sm:w-auto text-lg flex items-center justify-center gap-2"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+              <Link href="/note-app/download">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-cyan-500/50 hover:shadow-xl transition-all w-full sm:w-auto text-lg flex items-center justify-center gap-2"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  />
-                </svg>
-                Download for macOS (Apple Silicon) v0.1.0
-              </motion.a>
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                    />
+                  </svg>
+                  Download for macOS (Apple Silicon) v0.1.0
+                </motion.button>
+              </Link>
             </div>
             <p className="text-sm text-gray-400 mt-4">
               Note: This is an unsigned app. On first launch, right-click and select "Open" or allow it in System Settings → Privacy & Security.
