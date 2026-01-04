@@ -1,54 +1,65 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, mkdir, appendFile } from 'fs/promises';
-import { existsSync } from 'fs';
-import path from 'path';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const DATA_DIR = path.join(process.cwd(), 'data');
-const CSV_FILE = path.join(DATA_DIR, 'emails.csv');
 
 export async function POST(request: NextRequest) {
   try {
-    const { email } = await request.json();
+    // Handle both JSON and FormData
+    let email: string;
+    const contentType = request.headers.get('content-type') || '';
+
+    try {
+      if (contentType.includes('application/json')) {
+        const body = await request.json();
+        email = body.email;
+      } else {
+        const formData = await request.formData();
+        email = formData.get('email') as string;
+      }
+    } catch (parseError) {
+      console.error('Error parsing request:', parseError);
+      return NextResponse.json(
+        { error: 'Invalid request format' },
+        { status: 400 }
+      );
+    }
 
     // Validate email
-    if (!email || typeof email !== 'string') {
+    if (!email || typeof email !== 'string' || email.trim() === '') {
       return NextResponse.json(
         { error: 'Email is required' },
         { status: 400 }
       );
     }
 
-    if (!EMAIL_REGEX.test(email)) {
+    const trimmedEmail = email.trim();
+
+    if (!EMAIL_REGEX.test(trimmedEmail)) {
       return NextResponse.json(
         { error: 'Invalid email format' },
         { status: 400 }
       );
     }
 
-    // Ensure data directory exists
-    if (!existsSync(DATA_DIR)) {
-      await mkdir(DATA_DIR, { recursive: true });
-    }
-
-    // Check if CSV file exists, if not create it with header
-    const fileExists = existsSync(CSV_FILE);
-    const timestamp = new Date().toISOString();
-    const csvRow = `${email},${timestamp}\n`;
-
-    if (!fileExists) {
-      // Create file with header
-      await writeFile(CSV_FILE, 'email,timestamp\n' + csvRow, 'utf-8');
-    } else {
-      // Append to existing file
-      await appendFile(CSV_FILE, csvRow, 'utf-8');
-    }
-
-    return NextResponse.json({ success: true });
+    // Log the email submission
+    // In production, you should store this in a database or use Netlify Forms
+    console.log('Email submitted successfully:', trimmedEmail);
+    
+    // Return success response
+    // Note: In a production environment, you should:
+    // 1. Store emails in a database (MongoDB, PostgreSQL, etc.)
+    // 2. Or use Netlify Forms (requires form in HTML at build time)
+    // 3. Or use an email service API (Resend, SendGrid, etc.)
+    
+    return NextResponse.json({ 
+      success: true,
+      message: 'Email submitted successfully'
+    });
   } catch (error) {
-    console.error('Error saving email:', error);
+    console.error('Error in submit-email route:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { error: 'Failed to save email' },
+      { error: `Failed to submit email: ${errorMessage}` },
       { status: 500 }
     );
   }

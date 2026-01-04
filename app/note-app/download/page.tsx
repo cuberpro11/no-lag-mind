@@ -17,23 +17,47 @@ export default function DownloadPage() {
     setIsSubmitting(true);
 
     try {
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        throw new Error('Invalid email format');
+      }
+
+      // Submit to our API route
+      const formData = new FormData();
+      formData.append('form-name', 'note-app-download');
+      formData.append('email', email.trim());
+      formData.append('bot-field', ''); // Honeypot field
+
       const response = await fetch('/api/submit-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
+        body: formData,
       });
+
+      // Check if response is ok before trying to parse JSON
+      if (!response.ok) {
+        let errorMessage = 'Failed to submit email';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          // If JSON parsing fails, use status text
+          errorMessage = response.statusText || errorMessage;
+        }
+        throw new Error(errorMessage);
+      }
 
       const data = await response.json();
 
-      if (!response.ok) {
+      if (!data.success) {
         throw new Error(data.error || 'Failed to submit email');
       }
 
       setShowDownloadOptions(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      const errorMessage = err instanceof Error ? err.message : 'An error occurred';
+      console.error('Email submission error:', err);
+      setError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -71,9 +95,20 @@ export default function DownloadPage() {
           <p className="text-gray-400 mb-6 text-center">
             Enter your email to download the app
           </p>
-          <form onSubmit={handleEmailSubmit} className="space-y-4">
+          <form 
+            name="note-app-download"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={handleEmailSubmit} 
+            className="space-y-4"
+          >
+            {/* Hidden form-name input for Netlify */}
+            <input type="hidden" name="form-name" value="note-app-download" />
+            {/* Honeypot field for spam protection */}
+            <input type="hidden" name="bot-field" />
             <input
               type="email"
+              name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your.email@example.com"
